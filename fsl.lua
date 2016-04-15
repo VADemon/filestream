@@ -458,6 +458,7 @@ end
 
 function streamlib:writeByte(num)
 	self.stream:write(string.char(num))
+	return self
 end
 
 function streamlib:readUShort()
@@ -482,6 +483,7 @@ end
 
 function streamlib:writeShort(num)
 	self.stream:write(self:short2String(num))
+	return self
 end
 
 function streamlib:readULongShort()
@@ -506,6 +508,7 @@ end
 
 function streamlib:writeLongShort(num)
 	self.stream:write(self:longShort2String(num))
+	return self
 end
 
 function streamlib:readUInt()
@@ -531,6 +534,7 @@ end
 
 function streamlib:writeInt(num)
 	self.stream:write(self:int2String(num))
+	return self
 end
 
 function streamlib:readDouble()
@@ -551,6 +555,7 @@ end
 
 function streamlib:writeDouble(num)
 	self.stream:write(self:encodeDouble(num))
+	return self
 end
 
 --- Strings
@@ -560,7 +565,8 @@ function streamlib:readLine()
 end
 
 function streamlib:writeLine(line)
-	self.stream:write(line .. "\n")
+	self.stream:write((line or "") .. "\n")
+	return self
 end
 
 function streamlib:readChar()
@@ -568,7 +574,8 @@ function streamlib:readChar()
 end
 
 function streamlib:writeChar(char)
-	self.stream:write(string.sub(Char, 1, 1))
+	self.stream:write(string.sub(char, 1, 1))
+	return self
 end
 
 function streamlib:readPlainText(length)
@@ -577,6 +584,7 @@ end
 
 function streamlib:writePlainText(str)
 	self.stream:write(str)
+	return self
 end
 
 function streamlib:readString()
@@ -599,6 +607,7 @@ function streamlib:writeString(str)
 	
 	self:writeByte(length)
 	self:writePlainText(str)
+	return self
 end
 
 streamlib.writeLPString = streamlib.writeString
@@ -623,6 +632,7 @@ end
 
 function streamlib:writeNTString(str)
 	self:writePlainText(str .. "\0")
+	return self
 end
 
 return streamlib

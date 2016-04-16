@@ -91,6 +91,19 @@ function streamlib:byte2BinaryString(num)
 	return self:char2BinaryString(string.char(num))
 end
 
+function streamlib:composeByte(...)
+	local boolTbl = {...}	-- MSB -> LSB order
+	local byte = 0
+	
+	for i = 1, 8 do
+		if boolTbl[ i ] then
+			byte = byte + 2^(8-i)
+		end
+	end
+	
+	return byte
+end
+
 function streamlib:UShort2String(num)
 	assert(num < self.CONST.USHORT_MAX, "UShort2String: Number is greater than CONST.USHORT_MAX!")
 	local byte1, byte2 = 0, 0

@@ -203,6 +203,11 @@ function streamlib:int2String(num)
 	return self:UInt2String(num)
 end
 
+-- ftp://ftp.openwatcom.org/pub/devel/docs/ieee-754.pdf
+-- http://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html#show-toc
+-- https://www.youtube.com/watch?v=r0F_3XKcu5A
+-- http://www.rapidtables.com/calc/math/Log_Calculator.htm @> TODO FOR NEGATIVE NUMBERS
+-- https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%BE_%D0%B4%D0%B2%D0%BE%D0%B9%D0%BD%D0%BE%D0%B9_%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B8
 function streamlib:parseDouble(byteTbl)
 	local sign
 	local exponent, mantissa = 0, 0

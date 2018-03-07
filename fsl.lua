@@ -291,6 +291,8 @@ function streamlib:parseDouble(byteTbl)
 			return (sign and (math.huge) or (-math.huge)), sign
 		else
 			-- NaN
+			-- todo: Preserve Mantissa value, even though its not in the standard
+			-- more: https://habrahabr.ru/post/112953/
 			return (0/0), sign
 		end
 	end
